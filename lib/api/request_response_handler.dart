@@ -95,7 +95,7 @@ class RequestResponseHandler {
   }
 
   Future<http.Response> get({String url}) async {
-    var url = Uri.https('www.google.de', '/books/v1/volumes');
+    var url = Uri.https('www.googleapis.com', '/books/v1/volumes');
     // var url = Uri.https('www.pr0gramm.com', '/api/items/get');
 
     // Await the http get response, then decode the json-formatted response.
