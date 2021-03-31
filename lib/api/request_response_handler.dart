@@ -2,7 +2,6 @@ import 'package:http/http.dart' as http;
 import 'dart:async';
 import 'debug.dart';
 import 'preferences.dart';
-import 'dart:convert' as convert;
 
 class RequestResponseHandler {
   static String pr0Api = 'https://pr0gramm.com/api';
