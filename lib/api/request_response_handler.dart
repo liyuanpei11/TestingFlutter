@@ -56,9 +56,9 @@ class RequestResponseHandler {
     print("password: $password");
     print("captcha: $captcha");
     print("token: $token");
-    Uri uri = new Uri(
-        path: 'https://pr0gramm.com/api/user/login'); // TODO: Check ob das geht
-    return updateCookie(await http.post(
+    Uri uri = new Uri.https(
+        'pr0gramm.com', 'api/user/login'); // TODO: Check ob das geht
+    http.Response loginResponse = await http.post(
       uri,
       headers: headers,
       body: {
@@ -67,7 +67,8 @@ class RequestResponseHandler {
         'captcha': captcha,
         'token': token
       },
-    ));
+    );
+    return updateCookie(loginResponse);
   }
 
   Future<http.Response> logout() async {
@@ -94,7 +95,7 @@ class RequestResponseHandler {
     // var url = Uri.https('www.pr0gramm.com', '/api/items/get');
 
     // Await the http get response, then decode the json-formatted response.
-    var response = await http.get(uri, headers: headers);
+    var response = await http.get(uri, headers: {});
     if (response.statusCode == 200) {
       return response;
     } else {
@@ -102,6 +103,7 @@ class RequestResponseHandler {
       return null;
     }
   }
+
 
   setCookie(String cookies) async {
     if (internetDEBUG) {
